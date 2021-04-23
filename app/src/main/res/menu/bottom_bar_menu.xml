@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/item_theory"
+            android:id="@+id/item_first"
             android:icon="@drawable/ic_menu_list"
             android:title="@string/first_item" />
 
     <item
-            android:id="@+id/item_practice"
+            android:id="@+id/item_second"
         android:icon="@drawable/ic_menu_list"
             android:title="@string/second_item" />
 
     <item
-            android:id="@+id/item_testing"
+            android:id="@+id/item_third"
         android:icon="@drawable/ic_menu_list"
             android:title="@string/third_item" />
 </menu>

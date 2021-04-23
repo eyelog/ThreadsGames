@@ -3,13 +3,17 @@ package ru.eyelog.threadsgames.firstfragment.di
 import androidx.fragment.app.Fragment
 import dagger.BindsInstance
 import dagger.Component
+import ru.eyelog.threadsgames.adapter.di.RVAdapterModule
 import ru.eyelog.threadsgames.firstfragment.FirstFragment
 
-@Component(modules = [FirstModule::class])
+@Component(modules = [
+    FirstModule::class,
+    RVAdapterModule::class
+])
 interface FirstComponent {
 
     @Component.Builder
-    interface Builder{
+    interface Builder {
 
         @BindsInstance
         fun withFragment(fragment: Fragment): Builder
