@@ -3,4 +3,13 @@
     <string name="first_item">First</string>
     <string name="second_item">Second</string>
     <string name="third_item">Third</string>
+    <string name="fourth_item">Fourth</string>
+
+    <string name="simple_list">Simple list with blocking main thread</string>
+    <string name="work_in_background">Work in background</string>
+    <string name="work_in_background_toast">Check the logcat</string>
+    <string name="simple_work_with_ui">Simple work with ui</string>
+
+    <string name="async_work">Async work</string>
+    <string name="sync_work">Syncronized work</string>
 </resources>

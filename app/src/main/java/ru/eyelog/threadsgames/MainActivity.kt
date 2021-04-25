@@ -2,48 +2,43 @@ package ru.eyelog.threadsgames
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-import ru.eyelog.threadsgames.firstfragment.FirstFragment
-import ru.eyelog.threadsgames.secondfragment.SecondFragment
-import ru.eyelog.threadsgames.thirdfragment.ThirdFragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var appBarConfiguration : AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.item_first -> {
-                    routeController(0)
-                    true
-                }
-                R.id.item_second -> {
-                    routeController(1)
-                    true
-                }
-                R.id.item_third -> {
-                    routeController(2)
-                    true
-                }
-                else -> false
-            }
-        }
+        val host: NavHostFragment = supportFragmentManager
+                .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
 
-        routeController(0)
-    }
+        val navController = host.navController
 
-    private fun routeController(position: Int) {
-        val fragments = listOf(
-                FirstFragment(),
-                SecondFragment(),
-                ThirdFragment()
+        appBarConfiguration = AppBarConfiguration(
+                setOf(R.id.firstFragment, R.id.secondFragment, R.id.thirdFragment)
         )
 
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.mainFragmentSpace, fragments[position])
-                .commit()
+        setupActionBar(navController, appBarConfiguration)
+
+        setupBottomNavMenu(navController)
+
+    }
+
+    private fun setupBottomNavMenu(navController: NavController) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        bottomNav?.setupWithNavController(navController)
+    }
+
+    private fun setupActionBar(navController: NavController,
+                               appBarConfig : AppBarConfiguration) {
+        setupActionBarWithNavController(navController, appBarConfig)
     }
 }

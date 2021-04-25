@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_layout.*
 import ru.eyelog.threadsgames.R
 import ru.eyelog.threadsgames.thirdfragment.di.DaggerThirdComponent
 import javax.inject.Inject
@@ -39,5 +40,7 @@ class ThirdFragment: Fragment() {
         viewModel.sampleLiveData.observe(viewLifecycleOwner, {
             Log.i("Logcat", "Element $it")
         })
+
+        btFirst.text = resources.getString(R.string.third_item)
     }
 }

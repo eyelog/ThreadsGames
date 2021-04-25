@@ -1,10 +1,11 @@
 package ru.eyelog.threadsgames.firstfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_layout.*
@@ -53,8 +54,29 @@ class FirstFragment: Fragment() {
             adapter.notifyDataSetChanged()
         })
 
+        btFirst.text = resources.getString(R.string.simple_list)
         btFirst.setOnClickListener {
-            viewModel.setData()
+            viewModel.cleanList()
+            viewModel.startBlockingThread()
         }
+
+        btSecond.text = resources.getString(R.string.work_in_background)
+        btSecond.setOnClickListener {
+            Toast.makeText(
+                requireContext(),
+                resources.getString(R.string.work_in_background_toast),
+                Toast.LENGTH_SHORT
+            ).show()
+            viewModel.cleanList()
+            viewModel.startBackgroundThread()
+        }
+
+        btThird.text = resources.getString(R.string.simple_work_with_ui)
+        btThird.setOnClickListener {
+            viewModel.cleanList()
+            viewModel.startBackgroundThreadWithHandler()
+        }
+
+        btFourth.isVisible = false
     }
 }
