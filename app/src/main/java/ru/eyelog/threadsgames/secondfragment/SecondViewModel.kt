@@ -15,7 +15,7 @@ class SecondViewModel: ViewModel(), LifecycleObserver {
     val sampleLiveData: LiveData<List<String>> get() = _sampleLiveData
     private val _sampleLiveData = MediatorLiveData<List<String>>()
 
-    val data = mutableListOf<String>()
+    private val data = mutableListOf<String>()
 
     private val handler: Handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {

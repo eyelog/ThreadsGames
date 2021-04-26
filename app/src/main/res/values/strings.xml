@@ -12,4 +12,7 @@
 
     <string name="async_work">Async work</string>
     <string name="sync_work">Syncronized work</string>
+
+    <string name="unvolatile_work">Unvolatile work</string>
+    <string name="volatile_work">Volatile work</string>
 </resources>
