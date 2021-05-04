@@ -9,6 +9,10 @@
         android:name="ru.eyelog.threadsgames.firstfragment.FirstFragment"
         android:label="FirstFragment" />
     <fragment
+        android:id="@+id/fourthFragment"
+        android:name="ru.eyelog.threadsgames.fourthfragment.FourthFragment"
+        android:label="FirstFragment" />
+    <fragment
         android:id="@+id/secondFragment"
         android:name="ru.eyelog.threadsgames.secondfragment.SecondFragment"
         android:label="SecondFragment" />

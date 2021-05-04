@@ -7,6 +7,11 @@
         android:title="@string/first_item" />
 
     <item
+        android:id="@+id/fourthFragment"
+        android:icon="@drawable/ic_menu_list"
+        android:title="@string/fourth_item" />
+
+    <item
         android:id="@+id/secondFragment"
         android:icon="@drawable/ic_menu_list"
         android:title="@string/second_item" />

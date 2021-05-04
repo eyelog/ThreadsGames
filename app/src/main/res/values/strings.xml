@@ -10,6 +10,8 @@
     <string name="work_in_background_toast">Check the logcat</string>
     <string name="simple_work_with_ui">Simple work with ui</string>
 
+    <string name="simple_callable">Simple callable</string>
+
     <string name="async_work">Async work</string>
     <string name="sync_work">Syncronized work</string>
 

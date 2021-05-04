@@ -9,6 +9,10 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.callbackFlow
+import java.util.concurrent.Callable
+import java.util.concurrent.FutureTask
+import kotlin.reflect.KCallable
 
 class FirstViewModel : ViewModel(), LifecycleObserver {
 
@@ -27,6 +31,7 @@ class FirstViewModel : ViewModel(), LifecycleObserver {
         }
     }
 
+    // Работа потока без вывода результата
     fun startBackgroundThread() {
 
         val runnable = Runnable {
@@ -34,14 +39,16 @@ class FirstViewModel : ViewModel(), LifecycleObserver {
                 Thread.sleep(1000)
                 data.add(i.toString())
                 Log.i("Logcat", "data: $data")
-                // Следующая строчка крашнед приложение
+                // Следующая строчка грохнет приложение
                 // _sampleLiveData.value = data
             }
         }
         val thread = Thread(runnable)
+        Log.i("Logcat ", "Thread name ${thread.name}")
         thread.start()
     }
 
+    // Работа потока с выводом результата через хендлер
     fun startBackgroundThreadWithHandler() {
 
         val handler: Handler = object : Handler(Looper.getMainLooper()) {
@@ -62,7 +69,25 @@ class FirstViewModel : ViewModel(), LifecycleObserver {
             }
         }
         val thread = Thread(runnable)
+        Log.i("Logcat ", "Thread name ${thread.name}")
         thread.start()
+    }
+
+    fun startBackgroundThreadWithCallable(){
+        val callable = Callable {
+            for (i in 0..3) {
+                Thread.sleep(1000)
+                return@Callable "tap"
+            }
+
+            return@Callable "tap"
+        }
+
+        val future = FutureTask<String>(callable)
+
+//        val thread = Thread(callable)
+//        Log.i("Logcat ", "Thread name ${thread.name}")
+//        thread.start()
     }
 
     fun cleanList() {

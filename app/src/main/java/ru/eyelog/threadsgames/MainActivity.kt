@@ -23,13 +23,16 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
 
         appBarConfiguration = AppBarConfiguration(
-                setOf(R.id.firstFragment, R.id.secondFragment, R.id.thirdFragment)
+                setOf(
+                        R.id.firstFragment,
+                        R.id.fourthFragment,
+                        R.id.secondFragment,
+                        R.id.thirdFragment
+                )
         )
 
         setupActionBar(navController, appBarConfiguration)
-
         setupBottomNavMenu(navController)
-
     }
 
     private fun setupBottomNavMenu(navController: NavController) {
